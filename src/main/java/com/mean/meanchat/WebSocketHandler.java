@@ -30,9 +30,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
         if (uid != null) {
             userWebSocketSessions.put(uid, session);
             System.out.println("WebSocket: connect authorize success:"+uid);
-            session.sendMessage(new TextMessage("connect success"));
+            session.sendMessage(new TextMessage("authorize success"));
         }else {
             System.out.println("WebSocket: connect authorize failure");
+            session.sendMessage(new TextMessage("authorize failure"));
+
         }
     }
 

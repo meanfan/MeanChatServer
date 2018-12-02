@@ -13,23 +13,23 @@ import org.springframework.web.socket.config.annotation.*;
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
-    private WebSocketHandler webSocketHandler;
-    private WebSocketInterceptor webSocketInterceptor;
-
-    @Autowired
-    public void setWebSocketHandler(WebSocketHandler webSocketHandler) {
-        this.webSocketHandler = webSocketHandler;
-    }
-
-    @Autowired
-    public void setWebSocketInterceptor(WebSocketInterceptor webSocketInterceptor) {
-        this.webSocketInterceptor = webSocketInterceptor;
-    }
+//    private WebSocketHandler webSocketHandler;
+//    private WebSocketInterceptor webSocketInterceptor;
+//
+//    @Autowired
+//    public void setWebSocketHandler(WebSocketHandler webSocketHandler) {
+//        this.webSocketHandler = webSocketHandler;
+//    }
+//
+//    @Autowired
+//    public void setWebSocketInterceptor(WebSocketInterceptor webSocketInterceptor) {
+//        this.webSocketInterceptor = webSocketInterceptor;
+//    }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(webSocketHandler, "/websocket")
-                .addInterceptors(webSocketInterceptor)
+        webSocketHandlerRegistry.addHandler(new WebSocketHandler(), "/websocket")
+                .addInterceptors(new WebSocketInterceptor())
                 .setAllowedOrigins("*"); //必须设置，否则是有限制的
     }
 }
